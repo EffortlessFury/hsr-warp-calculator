@@ -4,8 +4,10 @@ const CHARACTER_SOFT_PITY = 74;
 const CONE_SOFT_PITY = 64;
 const CHARACTER_PITY = 90;
 const CONE_PITY = 80;
-const LIMITED_CONE_CHANCE = 0.75;
-const LIMITED_CHARACTER_CHANCE = 0.5; //Chance of getting the limited char when getting a 5 star (50%)
+// The "real" odds are not 50/50 and 75/25!
+// https://www.reddit.com/r/HonkaiStarRail/comments/1cib3kb/comment/l2826k6/
+const LIMITED_CONE_CHANCE = 0.78125;
+const LIMITED_CHARACTER_CHANCE = 0.5625; //Chance of getting the limited char when getting a 5 star (50%)
 const SOFT_PITY_INCREMENT = 0.06;
 
 export function CalculateWarpProbability(
