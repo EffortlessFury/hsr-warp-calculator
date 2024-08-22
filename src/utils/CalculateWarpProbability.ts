@@ -76,8 +76,10 @@ export function CalculateWarpProbability(
           //change curr rng
           currFiveStarChance = FIVE_STAR_CONE_CHANCE;
 
+          //for every pull starting at pull {CONE_SOFT_PITY} (currConePity == (CONE_SOFT_PITY - 1)), add an additional {SOFT_PITY_INCREMENT} to odds
           currFiveStarChance +=
-            SOFT_PITY_INCREMENT * Math.max(currConePity - CONE_SOFT_PITY, 0);
+            SOFT_PITY_INCREMENT *
+            Math.max(currConePity - (CONE_SOFT_PITY - 1) + 1, 0);
           ////
 
           //roll and see if you get 5 star
