@@ -39,9 +39,10 @@ export function CalculateWarpProbability(
 
         if (coneCopies > 0 ? charSuccesses < characterCopies : true) {
           //change curr rng
+          //for every pull starting at pull {CHARACTER_SOFT_PITY} (currCharPity == (CHARACTER_SOFT_PITY - 1)), add an additional {SOFT_PITY_INCREMENT} to odds
           currFiveStarChance +=
             SOFT_PITY_INCREMENT *
-            Math.max(currCharPity - CHARACTER_SOFT_PITY, 0);
+            Math.max(currCharPity - (CHARACTER_SOFT_PITY - 1) + 1, 0);
           /////
 
           //roll and see if you get 5 star
