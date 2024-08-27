@@ -6,8 +6,10 @@ const CHARACTER_PITY = 90;
 const CONE_PITY = 80;
 // The "real" odds are not 50/50 and 75/25!
 // https://www.reddit.com/r/HonkaiStarRail/comments/1cib3kb/comment/l2826k6/
-const LIMITED_CONE_CHANCE = 0.78125;
-const LIMITED_CHARACTER_CHANCE = 0.5625; //Chance of getting the limited char when getting a 5 star (50%)
+const LISTED_LIMITED_CONE_CHANCE = 0.75;
+const LISTED_LIMITED_CHARACTER_CHANCE = 0.5; //Chance of getting the limited char when getting a 5 star (50%)
+const ACTUAL_LIMITED_CONE_CHANCE = 0.78125;
+const ACTUAL_LIMITED_CHARACTER_CHANCE = 0.5625; //Chance of getting the limited char when getting a 5 star (50%)
 const SOFT_PITY_INCREMENT = 0.06;
 
 export function CalculateWarpProbability(
@@ -16,6 +18,7 @@ export function CalculateWarpProbability(
   conePity: number,
   coneGuaranteed: boolean,
   characterGuaranteed: boolean,
+  usePracticalOdds: boolean,
   characterCopies: number,
   coneCopies: number,
   numSimulations: number
@@ -53,6 +56,7 @@ export function CalculateWarpProbability(
             currCharPity + 1 === CHARACTER_PITY
           ) {
             //check if limited is garanteed
+            var LIMITED_CHARACTER_CHANCE = usePracticalOdds ? ACTUAL_LIMITED_CHARACTER_CHANCE : LISTED_LIMITED_CHARACTER_CHANCE; 
             if (
               currCharacterGuaranteed ||
               Math.random() < LIMITED_CHARACTER_CHANCE
@@ -90,6 +94,7 @@ export function CalculateWarpProbability(
             currConePity + 1 === CONE_PITY
           ) {
             //check if limited is garanteed
+            var LIMITED_CONE_CHANCE = usePracticalOdds ? ACTUAL_LIMITED_CONE_CHANCE : LISTED_LIMITED_CONE_CHANCE;
             if (currConeGuaranteed || Math.random() < LIMITED_CONE_CHANCE) {
               coneSuccesses++;
 

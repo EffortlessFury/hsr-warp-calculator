@@ -30,6 +30,7 @@ function App() {
   const [conePity, setConePity] = useState(0);
   const [coneGuaranteed, setConeGuaranteed] = useState(false);
   const [characterGuaranteed, setCharacterGuaranteed] = useState(false);
+  const [usePracticalOdds, setUsePracticalOdds] = useState(false);
   const [characterCopies, setCharacterCopies] = useState(0);
   const [coneCopies, setConeCopies] = useState(0);
   const [numSimulations, setNumSimulations] = useState(DEFAULT_NUM_SIMULATIONS);
@@ -126,6 +127,32 @@ function App() {
               </FormControl>
             </Tooltip>
           </Flex>
+          <Flex gap={5}>
+            <Tooltip
+                hasArrow
+                label="Use the actual 50/50 odds observed via user-collected data"
+                fontSize="sm"
+              >
+                <Box
+                  p={"5px"}
+                  h={"40px"}
+                  borderWidth="1px"
+                  borderRadius={"md"}
+                  w={"100%"}
+                >
+                  <Checkbox
+                    onChange={() => {
+                      setChance(-1);
+                      setUsePracticalOdds(!usePracticalOdds);
+                    }}
+                    ml={"2px"}
+                    mt={"2px"}
+                  >
+                    Use Practical Odds
+                  </Checkbox>
+                </Box>
+              </Tooltip>
+            </Flex>
 
           {/*---------------------------Character --------------------------------------*/}
           <Flex gap={5}>
@@ -346,6 +373,7 @@ function App() {
                   conePity,
                   coneGuaranteed,
                   characterGuaranteed,
+                  usePracticalOdds,
                   characterCopies,
                   coneCopies,
                   numSimulations
